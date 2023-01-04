@@ -1,0 +1,37 @@
+name: Open release branch
+
+on:
+  workflow_dispatch: {}
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build:
+    name: Open release branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up environment
+        uses: ./.github/actions/setup
+      - run: bash scripts/git-user-config.sh
+      - name: Set changeset status location
+        run: |
+          CHANGESETS_STATUS_JSON=$(node --print --eval "require('path').relative(__dirname, '$RUNNER_TEMP/status.json')")
+          echo "CHANGESETS_STATUS_JSON=$CHANGESETS_STATUS_JSON" >> $GITHUB_ENV
+      - name: Get changeset status
+        run: npx changeset status --output="$CHANGESETS_STATUS_JSON"
+      - name: Get new version
+        run: |
+          RELEASES=$(node --print --eval "require('$CHANGESETS_STATUS_JSON').releases")
+          if [ $(node --print --eval "$RELEASES.length") != 1 ]; then
+            echo "::error file=$CHANGESETS_STATUS_JSON::More than 1 release in status file"
+            exit 1;
+          fi;
+          NEW_VERSION=$(node --print --eval "($RELEASES)[0].newVersion")
+          echo "NEW_VERSION=${NEW_VERSION}" >> $GITHUB_ENV
+      - name: Open branch
+        run: |
+          BRANCH_SUFFIX=$(echo $NEW_VERSION | awk -F'.' '{ print $1"."$2 }')
+          RELEASE_BRANCH=release-v$BRANCH_SUFFIX
+          git checkout -b $RELEASE_BRANCH
+          git push --all origin

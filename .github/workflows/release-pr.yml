@@ -8,14 +8,14 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  create-release-pr:
-    name: Create Release PR
+  release:
+    name: Create release PR
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up environment
         uses: ./.github/actions/setup
-      - name: Set release title variable
+      - name: Set release title
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
@@ -23,7 +23,7 @@ jobs:
           PACKAGE_JSON_NEXT_PATCH=$(npx semver -i $(node --print --eval "require('./package.json').version"))
           NEXT_VERSION=$(npx semver $BRANCH_VERSION $PACKAGE_JSON_NEXT_PATCH | tail -n 1)
           echo "TITLE=Release v${NEXT_VERSION}" >> $GITHUB_ENV
-      - name: Create Release PR
+      - name: Create PR
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
