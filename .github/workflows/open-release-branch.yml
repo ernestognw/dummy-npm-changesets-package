@@ -5,12 +5,16 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+
 jobs:
   build:
+    environment: Release
     name: Open release branch
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+           token: ${{ secrets.GH_SECRET }}
       - name: Set up environment
         uses: ./.github/actions/setup
       - run: bash scripts/git-user-config.sh
