@@ -28,7 +28,7 @@ jobs:
         run: |
           RELEASES=$(node --print --eval "require('$CHANGESETS_STATUS_JSON').releases")
           if [ $(node --print --eval "$RELEASES.length") != 1 ]; then
-            echo "::error file=$CHANGESETS_STATUS_JSON::More than 1 release in status file"
+            echo "::error file=$CHANGESETS_STATUS_JSON::The status doesn't contain only 1 release"
             exit 1;
           fi;
           NEW_VERSION=$(node --print --eval "($RELEASES)[0].newVersion")
