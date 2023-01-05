@@ -1,4 +1,4 @@
-name: Open release branch
+name: Prepare final release
 
 on:
   workflow_dispatch: {}
