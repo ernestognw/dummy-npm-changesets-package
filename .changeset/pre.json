@@ -4,5 +4,9 @@
   "initialVersions": {
     "dummy-npm-changesets-package": "1.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "eighty-buttons-worry",
+    "funny-points-argue",
+    "gold-tables-knock"
+  ]
 }
