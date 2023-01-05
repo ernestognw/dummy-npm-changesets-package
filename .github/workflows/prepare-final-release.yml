@@ -1,4 +1,4 @@
-name: Open release branch
+name: Prepare final release
 
 on:
   workflow_dispatch: {}
@@ -30,7 +30,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            octokit.rest.pulls.create({
+            github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               head: github.ref_name,
