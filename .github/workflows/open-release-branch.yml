@@ -38,9 +38,9 @@ jobs:
           BRANCH_SUFFIX=$(echo $NEW_VERSION | awk -F'.' '{ print $1"."$2 }')
           RELEASE_BRANCH=release-v$BRANCH_SUFFIX
           git checkout -b $RELEASE_BRANCH
-      - name: Enter in prerelease state and 
-        run: npx changeset pre enter rc
-      - name: Commit state
+      - name: Enter in prerelease state
+        run: |
+          npx changeset pre enter rc
           git add .
           git commit -m "Start release candidate"
           git push --all origin
