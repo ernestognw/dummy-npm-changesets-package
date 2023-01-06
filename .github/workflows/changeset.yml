@@ -1,6 +1,8 @@
 name: changeset
 
 on:
+  branch:
+    - master
   pull_request:
     types:
       - opened
