@@ -1,5 +1,15 @@
 # dummy-npm-changesets-package
 
+## 1.5.0-rc.0
+
+### Minor Changes
+
+- [#19](https://github.com/ernestognw/dummy-npm-changesets-package/pull/19) [`dc711c5`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/dc711c586d94c839d7ed7157b1871775081ed73d) Thanks [@ernestognw](https://github.com/ernestognw)! - This is a minor
+
+### Patch Changes
+
+- [`fb86620`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/fb86620801714cf4e4cb7222b898112369e92e3d) Thanks [@ernestognw](https://github.com/ernestognw)! - This is a patch
+
 ## 1.4.0-rc.1
 
 ### Patch Changes
