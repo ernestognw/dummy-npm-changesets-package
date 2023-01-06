@@ -1,5 +1,17 @@
 # dummy-npm-changesets-package
 
+## 1.4.0
+
+### Minor Changes
+
+- [#13](https://github.com/ernestognw/dummy-npm-changesets-package/pull/13) [`154fc03`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/154fc03ca24922bf211c861aed5eb695814522b5) Thanks [@ernestognw](https://github.com/ernestognw)! - Add this is a minor
+
+- [`d9677c5`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/d9677c5716b9738c0a9c9271cf2ec986b6b512ef) Thanks [@ernestognw](https://github.com/ernestognw)! - This is another minor
+
+### Patch Changes
+
+- [#16](https://github.com/ernestognw/dummy-npm-changesets-package/pull/16) [`d06ad48`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/d06ad48e53c18dfff1694611f40e4195d36ff517) Thanks [@ernestognw](https://github.com/ernestognw)! - Pach
+
 ## 1.4.0-rc.1
 
 ### Patch Changes
