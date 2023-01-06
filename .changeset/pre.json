@@ -4,5 +4,8 @@
   "initialVersions": {
     "dummy-npm-changesets-package": "1.4.0"
   },
-  "changesets": []
+  "changesets": [
+    "chilled-penguins-switch",
+    "stupid-poems-warn"
+  ]
 }
