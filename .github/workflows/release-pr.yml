@@ -23,10 +23,13 @@ jobs:
           PACKAGE_JSON_NEXT_PATCH=$(npx semver -i $(node --print --eval "require('./package.json').version"))
           NEXT_VERSION=$(npx semver $BRANCH_VERSION $PACKAGE_JSON_NEXT_PATCH | tail -n 1)
           echo "TITLE=Release v${NEXT_VERSION}" >> $GITHUB_ENV
-      - name: Create PR
+      - name: Create PR or Release to NPM
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
+          publish: echo "Publishing to NPM" # No need for building but publish script is required
+          version: npm run version
           title: ${{ env.TITLE }}
           commit: ${{ env.TITLE }}
