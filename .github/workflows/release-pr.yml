@@ -9,7 +9,8 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    name: Create release PR
+    name: Release PR or Publish
+    environment: Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
