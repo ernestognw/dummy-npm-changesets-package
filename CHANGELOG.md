@@ -1,5 +1,11 @@
 # dummy-npm-changesets-package
 
+## 1.4.0-rc.0
+
+### Minor Changes
+
+- [#13](https://github.com/ernestognw/dummy-npm-changesets-package/pull/13) [`154fc03`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/154fc03ca24922bf211c861aed5eb695814522b5) Thanks [@ernestognw](https://github.com/ernestognw)! - Add this is a minor
+
 ## 1.3.0
 
 ### Minor Changes
