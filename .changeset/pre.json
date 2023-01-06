@@ -6,6 +6,7 @@
   },
   "changesets": [
     "chilled-penguins-switch",
+    "short-steaks-develop",
     "stupid-poems-warn"
   ]
 }
