@@ -30,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
-          publish: echo "Publishing to NPM" # No need for building but publish script is required
+          publish: npm publish
           version: npm run version
           title: ${{ env.TITLE }}
           commit: ${{ env.TITLE }}
