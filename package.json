@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "version": "changeset version"
+    "version": "changeset version; sh scripts/release/version.sh"
   },
   "keywords": [],
   "author": "",
