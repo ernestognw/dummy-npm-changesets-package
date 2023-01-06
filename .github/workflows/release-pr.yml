@@ -30,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
-          publish: npm publish
+          publish: npx changeset publish
           version: npm run version
           title: ${{ env.TITLE }}
           commit: ${{ env.TITLE }}
