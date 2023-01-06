@@ -3,7 +3,7 @@ name: changeset
 on:
   pull_request:
     branches:
-      - "!release-v*"
+      - master
     types:
       - opened
       - synchronize
