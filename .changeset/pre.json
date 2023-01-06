@@ -4,5 +4,8 @@
   "initialVersions": {
     "dummy-npm-changesets-package": "1.2.0"
   },
-  "changesets": []
+  "changesets": [
+    "eighty-buttons-worry",
+    "mighty-walls-join"
+  ]
 }
