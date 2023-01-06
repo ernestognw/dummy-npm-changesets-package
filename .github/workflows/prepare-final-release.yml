@@ -35,5 +35,5 @@ jobs:
               repo: context.repo.repo,
               head: github.ref_name,
               base: 'main',
-              title: ${{ format('Merge {0}', github.ref_name) }}
+              title: '${{ format('Merge {0}', github.ref_name) }}'
             });
