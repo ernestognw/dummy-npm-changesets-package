@@ -1,5 +1,33 @@
 # dummy-npm-changesets-package
 
+## 1.5.0
+
+### Minor Changes
+
+- [#19](https://github.com/ernestognw/dummy-npm-changesets-package/pull/19) [`dc711c5`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/dc711c586d94c839d7ed7157b1871775081ed73d) Thanks [@ernestognw](https://github.com/ernestognw)! - This is a minor
+
+### Patch Changes
+
+- [#22](https://github.com/ernestognw/dummy-npm-changesets-package/pull/22) [`671be1b`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/671be1bebb31cefac023ff2f51522e9c97e4783c) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fixing rc
+
+- [`fb86620`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/fb86620801714cf4e4cb7222b898112369e92e3d) Thanks [@ernestognw](https://github.com/ernestognw)! - This is a patch
+
+## 1.5.0-rc.1
+
+### Patch Changes
+
+- [`671be1b`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/671be1bebb31cefac023ff2f51522e9c97e4783c) Thanks [@ernestognw](https://github.com/ernestognw)! - Fixing rc
+
+## 1.5.0-rc.0
+
+### Minor Changes
+
+- [#19](https://github.com/ernestognw/dummy-npm-changesets-package/pull/19) [`dc711c5`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/dc711c586d94c839d7ed7157b1871775081ed73d) Thanks [@ernestognw](https://github.com/ernestognw)! - This is a minor
+
+### Patch Changes
+
+- [`fb86620`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/fb86620801714cf4e4cb7222b898112369e92e3d) Thanks [@ernestognw](https://github.com/ernestognw)! - This is a patch
+
 ## 1.4.0-rc.1
 
 ### Patch Changes
