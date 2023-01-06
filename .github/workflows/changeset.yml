@@ -3,7 +3,7 @@ name: changeset
 on:
   pull_request:
     branches:
-      - '!release-v*'
+      - "!release-v*"
     types:
       - opened
       - synchronize
@@ -23,4 +23,4 @@ jobs:
       - name: Set up environment
         uses: ./.github/actions/setup
       - name: Check changeset
-        run: npx changeset status --since=${{ github.base_ref }} 
+        run: npx changeset status --since=${{ github.base_ref }}
