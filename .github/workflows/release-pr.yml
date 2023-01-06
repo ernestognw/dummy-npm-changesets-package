@@ -27,10 +27,10 @@ jobs:
       - name: Create PR or Release to NPM
         uses: changesets/action@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           publish: echo "Publishing to NPM" # No need for building but publish script is required
-          version: npm run version
+          # version: npm run version
           title: ${{ env.TITLE }}
           commit: ${{ env.TITLE }}
