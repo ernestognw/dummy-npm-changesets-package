@@ -1,9 +1,9 @@
 name: changeset
 
 on:
-  branch:
-    - master
   pull_request:
+    branches:
+      - '!release-v*'
     types:
       - opened
       - synchronize
