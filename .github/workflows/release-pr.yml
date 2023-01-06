@@ -31,5 +31,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           publish: echo "Publishing to NPM" # No need for building but publish script is required
+          version: npm run version && npx changeset version
           title: ${{ env.TITLE }}
           commit: ${{ env.TITLE }}
