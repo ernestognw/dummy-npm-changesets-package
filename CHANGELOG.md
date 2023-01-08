@@ -26,8 +26,7 @@
 ## 1.2.0 (2023-01-04)
 
 - Minor ([#1](https://github.com/ernestognw/dummy-npm-changesets-package/pull/1))
-- [#6](https://github.com/ernestognw/dummy-npm-changesets-package/pull/6) [`d7ae3de`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/d7ae3de0ce6e10bd7d66ebc190ecb93a6eb79962) Thanks [@github-actions](https://github.com/apps/github-actions)! - Patch
-- Patch ([#1](https://github.com/ernestognw/dummy-npm-changesets-package/pull/1))
+- [#6](https://github.com/ernestognw/dummy-npm-changesets-package/pull/6) [`d7ae3de`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/d7ae3de0ce6e10bd7d66ebc190ecb93a6eb79962) Thanks [@github-actions](https://github.com/apps/github-actions)! - Patch- Patch ([#1](https://github.com/ernestognw/dummy-npm-changesets-package/pull/1))
 
 ## 1.2.0-rc.0 (2023-01-03)
 
