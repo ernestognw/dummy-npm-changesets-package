@@ -14,14 +14,12 @@ const RELEASE_LINE_REGEX = new RegExp(
 );
 const VERSION_TITLE_REGEX = /\n## (\d\.\d\.\d(-rc\.\d)?)\n/g;
 
-const formatted = CHANGELOG.replace(
-  /\n- (\[.*)/g,
-  (_, PRNumber, PRUrl, title) => {
+const formatted = CHANGELOG.replace(/\n- (\[.*)/g, "- $1")
+  .replace(RELEASE_LINE_REGEX, (_, PRNumber, PRUrl, title) => {
     const replaced = `- ${title}`;
     if (PRNumber && PRUrl) return `${replaced} ([#${PRNumber}](${PRUrl}))`;
     return replaced;
-  }
-)
+  })
   .replace(
     VERSION_TITLE_REGEX,
     `\n## $1 (${new Date().toISOString().split("T")[0]})\n\n`
