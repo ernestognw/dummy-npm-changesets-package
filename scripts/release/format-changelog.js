@@ -17,8 +17,8 @@ const VERSION_TITLE_REGEX = /\n## (\d\.\d\.\d(-rc\.\d)?)\n/g;
 const DATE = new Date().toISOString().split("T")[0];
 
 const formatted = CHANGELOG.replace(/\n- (\[.*)/g, "- $1")
-  .replace("([#]())", "") // Fallback when there's no PR
   .replace(RELEASE_LINE_REGEX, "- $3 ([#$1]($2))")
+  .replace("([#]())", "") // Fallback when there's no PR
   .replace(VERSION_TITLE_REGEX, `\n## $1 (${DATE})\n\n`)
   .replace(/\n### Major Changes\n/g, "")
   .replace(/\n### Minor Changes\n/g, "")
