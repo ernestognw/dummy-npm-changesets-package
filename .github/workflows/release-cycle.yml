@@ -106,7 +106,7 @@ jobs:
   publish:
     environment: npm
     name: Promote to final release
-    if: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' && steps.changesets.outputs.published == 'true' }}
+    if: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' && steps.changesets.outputs.hasChangesets == 'false' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
