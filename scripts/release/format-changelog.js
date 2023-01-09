@@ -9,9 +9,11 @@ const SHORT_SHA = "[0-9a-f]{7}";
 const FULL_SHA = "[0-9a-f]{40}";
 
 const RELEASE_LINE_REGEX = new RegExp(
-  `- ${PR_NUMBER}\\((${REPO_URL}pull/\\d+)\\) \\[\`${SHORT_SHA}\`\\]\\(${REPO_URL}commit/${FULL_SHA}\\) Thanks \\[\@${GITHUB_USERNAME}\\]\\(${GITHUB_URL}(?:apps/)?${GITHUB_USERNAME}\\)! - (.*)`,
+  `- (?:${PR_NUMBER}\\((${REPO_URL}pull/\\d+)\\) )?\\[\`${SHORT_SHA}\`\\]\\(${REPO_URL}commit/${FULL_SHA}\\) Thanks \\[\@${GITHUB_USERNAME}\\]\\(${GITHUB_URL}(?:apps/)?${GITHUB_USERNAME}\\)! - (.*)`,
   "g"
 );
+
+console.log(RELEASE_LINE_REGEX)
 
 const VERSION_TITLE_REGEX = /\n## (\d\.\d\.\d(-rc\.\d)?)\n/g;
 const DATE = new Date().toISOString().split("T")[0];
