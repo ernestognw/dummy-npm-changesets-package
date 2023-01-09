@@ -1,0 +1,11 @@
+{
+  "mode": "exit",
+  "tag": "rc",
+  "initialVersions": {
+    "dummy-npm-changesets-package": "1.5.0"
+  },
+  "changesets": [
+    "funny-ways-decide",
+    "short-steaks-develop"
+  ]
+}
