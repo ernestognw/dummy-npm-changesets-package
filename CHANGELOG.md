@@ -1,4 +1,12 @@
+/- (?:\[#(\d+)\]\((https:\/\/github\.com\/(?:[A-z\d](?:[A-z\d]|-(?=[A-z\d])){0,38})\/[A-z|-]+\/pull\/\d+)\) )?\[`[0-9a-f]{7}`\]\(https:\/\/github\.com\/(?:[A-z\d](?:[A-z\d]|-(?=[A-z\d])){0,38})\/[A-z|-]+\/commit\/[0-9a-f]{40}\) Thanks \[@(?:[A-z\d](?:[A-z\d]|-(?=[A-z\d])){0,38})\]\(https:\/\/github\.com\/(?:apps\/)?(?:[A-z\d](?:[A-z\d]|-(?=[A-z\d])){0,38})\)! - (.*)/g
 # dummy-npm-changesets-package
+
+## 1.6.0-rc.0 (2023-01-09)
+
+
+- `ERC721` Added wrapper. ([#]())
+
+- Fixing rc ([#]())
 
 ## 1.5.0-rc.0 (2023-01-08)
 
