@@ -4,5 +4,8 @@
   "initialVersions": {
     "dummy-npm-changesets-package": "1.5.0"
   },
-  "changesets": []
+  "changesets": [
+    "funny-ways-decide",
+    "short-steaks-develop"
+  ]
 }

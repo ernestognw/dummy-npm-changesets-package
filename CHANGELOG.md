@@ -1,5 +1,12 @@
 # dummy-npm-changesets-package
 
+## 1.6.0-rc.0 (2023-01-09)
+
+
+- [`9a79eff`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/9a79eff6a71916d68028e43603f9799913b6996a) Thanks [@ernestognw](https://github.com/ernestognw)! - `ERC721` Added wrapper.
+
+- [`c9b4f32`](https://github.com/ernestognw/dummy-npm-changesets-package/commit/c9b4f3219728b51cf5c9c3aa592218818feb0ab7) Thanks [@ernestognw](https://github.com/ernestognw)! - Fixing rc
+
 ## 1.5.0-rc.0 (2023-01-08)
 
 - This is a minor ([#19](https://github.com/ernestognw/dummy-npm-changesets-package/pull/19))
