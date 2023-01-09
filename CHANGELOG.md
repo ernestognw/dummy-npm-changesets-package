@@ -1,12 +1,5 @@
 # dummy-npm-changesets-package
 
-## 1.6.0-rc.0 (2023-01-09)
-
-- Patch ([#6](https://github.com/ernestognw/dummy-npm-changesets-package/pull/6))
-- Patch ([#6](https://github.com/ernestognw/dummy-npm-changesets-package/pull/6))
-- Patch ([#6](https://github.com/ernestognw/dummy-npm-changesets-package/pull/6))
-- Patch ([#6](https://github.com/ernestognw/dummy-npm-changesets-package/pull/6))
-
 ## 1.5.0-rc.0 (2023-01-08)
 
 - This is a minor ([#19](https://github.com/ernestognw/dummy-npm-changesets-package/pull/19))
