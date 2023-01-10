@@ -9,10 +9,30 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  check_state:
+    environment: Release Cycle
+    name: Check state
+    runs-on: ubuntu-latest
+    outputs:
+      main: ${{ github.ref_name == 'main' }}
+      release_branch: ${{ contains(github.ref_name, 'release-v') }}
+      push: ${{ github.event_name == 'push' }}
+      dispatch: ${{ github.event_name == 'workflow_dispatch' }}
+      publish_ready: ${{ steps.check_publish_ready.outputs.CHANGESETS_QUANTITY == "0" }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up environment
+        uses: ./.github/actions/setup
+      - id: check_publish_ready
+        name: Check if ready for publishing
+        run: |
+          CHANGESETS_QUANTITY=$(node -p -e "require('@changesets/read').default(process.cwd()).then(changesets => console.log(changesets.length))" | tail -n 1)
+          echo "CHANGESETS_QUANTITY=$CHANGESETS_QUANTITY" >> $GITHUB_ENV
   start_release_candidate:
+    needs: check_state
     environment: Release Cycle
     name: Start new release branch with release candidate
-    if: ${{ github.ref_name == 'main' && github.event_name == 'workflow_dispatch' }}
+    if: ${{ needs.check_state.outputs.main && needs.check_state.outputs.dispatch }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -48,9 +68,10 @@ jobs:
           git commit -m "Start release candidate"
           git push --all origin
   changesets_pr:
+    needs: check_state
     environment: Release Cycle
     name: Changesets PR
-    if: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' }}
+    if: ${{ needs.check_state.outputs.release_branch && needs.check_state.outputs.push }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -73,9 +94,10 @@ jobs:
           title: ${{ env.TITLE }}
           commit: ${{ env.TITLE }}
   promote_to_final:
+    needs: check_state
     environment: Release Cycle
     name: Promote to final release
-    if: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'workflow_dispatch' }}
+    if: ${{ needs.check_state.outputs.release_branch && needs.check_state.outputs.dispatch }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -105,22 +127,16 @@ jobs:
               title: '${{ format('Merge {0} branch', github.ref_name) }}'
             });
   publish:
+    needs: check_state
     environment: npm
     name: Promote to final release
-    if: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' }}
+    if: ${{ needs.check_state.outputs.release_branch && needs.check_state.outputs.push && needs.check_state.outputs.publish_ready }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up environment
         uses: ./.github/actions/setup
       - run: bash scripts/git-user-config.sh
-      - name: Check if ready for publish
-        run: |
-          CHANGESETS_QUANTITY=$(node -p -e "require('@changesets/read').default(process.cwd()).then(changesets => console.log(changesets.length))" | tail -n 1)
-          if [ $CHANGESETS_QUANTITY != 0 ]; then
-            echo "::error file=$CHANGESETS_STATUS_JSON::The status doesn't contain only 1 release"
-            exit 1;
-          fi;
       - name: Tag
         run: npx changeset tag
       - name: Publish to npm
