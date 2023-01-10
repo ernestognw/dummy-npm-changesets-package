@@ -4,5 +4,7 @@
   "initialVersions": {
     "dummy-npm-changesets-package": "1.6.0"
   },
-  "changesets": []
+  "changesets": [
+    "smooth-badgers-remain"
+  ]
 }
