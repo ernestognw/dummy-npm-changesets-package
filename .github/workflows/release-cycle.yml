@@ -156,5 +156,5 @@ jobs:
             github.rest.repos.createRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tagName: `v${require('./package.json').version}`
+              tag_name: `v${require('./package.json').version}`
             });
