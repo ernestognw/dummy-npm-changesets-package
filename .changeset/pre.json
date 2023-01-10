@@ -4,5 +4,7 @@
   "initialVersions": {
     "dummy-npm-changesets-package": "1.7.0"
   },
-  "changesets": []
+  "changesets": [
+    "modern-dogs-yawn"
+  ]
 }

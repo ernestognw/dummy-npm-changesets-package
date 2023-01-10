@@ -1,5 +1,9 @@
 # dummy-npm-changesets-package
 
+## 1.8.0-rc.0 (2023-01-10)
+
+- `ERC20`: Adding check of whatever ([#47](https://github.com/ernestognw/dummy-npm-changesets-package/pull/47))
+
 ## 1.7.0 (2023-01-10)
 
 - Test minor ([#34](https://github.com/ernestognw/dummy-npm-changesets-package/pull/34))
