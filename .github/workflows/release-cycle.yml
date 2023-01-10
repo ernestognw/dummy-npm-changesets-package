@@ -13,12 +13,6 @@ jobs:
     environment: Release Cycle
     name: Check state
     runs-on: ubuntu-latest
-    outputs:
-      main: ${{ github.ref_name == 'main' }}
-      release_branch: ${{ contains(github.ref_name, 'release-v') }}
-      push: ${{ github.event_name == 'push' }}
-      dispatch: ${{ github.event_name == 'workflow_dispatch' }}
-      publish_ready: ${{ steps.check_publish_ready.outputs.CHANGESETS_QUANTITY == '0' }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up environment
@@ -28,6 +22,12 @@ jobs:
         run: |
           CHANGESETS_QUANTITY=$(node -p -e "require('@changesets/read').default(process.cwd()).then(changesets => console.log(changesets.length))" | tail -n 1)
           echo "CHANGESETS_QUANTITY=$CHANGESETS_QUANTITY" >> $GITHUB_ENV
+    outputs:
+      main: ${{ github.ref_name == 'main' }}
+      release_branch: ${{ contains(github.ref_name, 'release-v') }}
+      push: ${{ github.event_name == 'push' }}
+      dispatch: ${{ github.event_name == 'workflow_dispatch' }}
+      publish_ready: ${{ steps.check_publish_ready.outputs.CHANGESETS_QUANTITY == '0' }}
   start_release_candidate:
     needs: check_state
     environment: Release Cycle
@@ -35,6 +35,7 @@ jobs:
     if: ${{ needs.check_state.outputs.main && needs.check_state.outputs.dispatch }}
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ needs.check_state.outputs }}
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_TOKEN }} # Needed so release cycle triggers when pushing
@@ -129,7 +130,7 @@ jobs:
   publish:
     needs: check_state
     environment: npm
-    name: Promote to final release
+    name: Publish to npm
     if: ${{ needs.check_state.outputs.release_branch && needs.check_state.outputs.push && needs.check_state.outputs.publish_ready }}
     runs-on: ubuntu-latest
     steps:
@@ -142,7 +143,8 @@ jobs:
       - name: Publish to npm
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish
+        run: |
+          npm publish
       - name: Upload tags
         run: git push --tags
       - name: Create Github Release
