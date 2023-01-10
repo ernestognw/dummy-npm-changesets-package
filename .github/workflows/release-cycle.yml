@@ -106,7 +106,7 @@ jobs:
             });
   publish:
     environment: npm
-    name: Publish release
+    name: Promote to final release
     if: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
@@ -116,7 +116,7 @@ jobs:
       - run: bash scripts/git-user-config.sh
       - name: Check if ready for publish
         run: |
-          CHANGESETS_QUANTITY=$(node -p -e "require('@changesets/read').default(process.cwd(), 'main').then(changesets => console.log(changesets.length))" | tail -n 1)
+          CHANGESETS_QUANTITY=$(node -p -e "require('@changesets/read').default(process.cwd()).then(changesets => console.log(changesets.length))" | tail -n 1)
           if [ $CHANGESETS_QUANTITY != 0 ]; then
             echo "::error file=$CHANGESETS_STATUS_JSON::The status doesn't contain only 1 release"
             exit 1;
