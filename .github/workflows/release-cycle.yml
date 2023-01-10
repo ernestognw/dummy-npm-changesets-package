@@ -35,7 +35,12 @@ jobs:
     if: ${{ needs.check_state.outputs.main && needs.check_state.outputs.dispatch }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ needs.check_state.outputs }}
+      - run: |
+          echo ${{ needs.check_state.outputs.main }}
+          echo ${{ needs.check_state.outputs.release_branch }}
+          echo ${{ needs.check_state.outputs.push }}
+          echo ${{ needs.check_state.outputs.dispatch }}
+          echo ${{ needs.check_state.outputs.publish_ready }}
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_TOKEN }} # Needed so release cycle triggers when pushing
