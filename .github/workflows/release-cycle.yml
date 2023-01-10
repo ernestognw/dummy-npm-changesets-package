@@ -23,24 +23,17 @@ jobs:
           CHANGESETS_QUANTITY=$(node -p -e "require('@changesets/read').default(process.cwd()).then(changesets => console.log(changesets.length))" | tail -n 1)
           echo "CHANGESETS_QUANTITY=$CHANGESETS_QUANTITY" >> $GITHUB_ENV
     outputs:
-      main: ${{ github.ref_name == 'main' }}
-      release_branch: ${{ contains(github.ref_name, 'release-v') }}
-      push: ${{ github.event_name == 'push' }}
-      dispatch: ${{ github.event_name == 'workflow_dispatch' }}
-      publish_ready: ${{ steps.check_publish_ready.outputs.CHANGESETS_QUANTITY == '0' }}
+      start_release_candidate: ${{ github.ref_name == 'main' && github.event_name == 'workflow_dispatch' }}
+      changesets_pr: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' }}
+      promote_to_final: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'workflow_dispatch' }}
+      publish: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' && steps.check_publish_ready.outputs.CHANGESETS_QUANTITY == '0' }}
   start_release_candidate:
     needs: check_state
     environment: Release Cycle
     name: Start new release branch with release candidate
-    if: ${{ needs.check_state.outputs.main && needs.check_state.outputs.dispatch }}
+    if: ${{ needs.check_state.outputs.start_release_candidate == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo ${{ needs.check_state.outputs.main }}
-          echo ${{ needs.check_state.outputs.release_branch }}
-          echo ${{ needs.check_state.outputs.push }}
-          echo ${{ needs.check_state.outputs.dispatch }}
-          echo ${{ needs.check_state.outputs.publish_ready }}
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_TOKEN }} # Needed so release cycle triggers when pushing
@@ -77,7 +70,7 @@ jobs:
     needs: check_state
     environment: Release Cycle
     name: Changesets PR
-    if: ${{ needs.check_state.outputs.release_branch && needs.check_state.outputs.push }}
+    if: ${{ needs.check_state.outputs.changesets_pr == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -103,7 +96,7 @@ jobs:
     needs: check_state
     environment: Release Cycle
     name: Promote to final release
-    if: ${{ needs.check_state.outputs.release_branch && needs.check_state.outputs.dispatch }}
+    if: ${{ needs.check_state.outputs.promote_to_final == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -136,7 +129,7 @@ jobs:
     needs: check_state
     environment: npm
     name: Publish to npm
-    if: ${{ needs.check_state.outputs.release_branch && needs.check_state.outputs.push && needs.check_state.outputs.publish_ready }}
+    if: ${{ needs.check_state.outputs.publish == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
