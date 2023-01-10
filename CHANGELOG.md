@@ -1,5 +1,9 @@
 # dummy-npm-changesets-package
 
+## 1.7.0 (2023-01-10)
+
+- Test minor ([#34](https://github.com/ernestognw/dummy-npm-changesets-package/pull/34))
+
 ## 1.6.0 (2023-01-09)
 
 - `ERC721` Added wrapper.
