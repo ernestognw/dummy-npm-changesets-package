@@ -92,6 +92,9 @@ jobs:
           version: npm run version
           title: ${{ env.TITLE }}
           commit: ${{ env.TITLE }}
+          description: |
+            This is an automated PR for releasing ${{ github.repository }}
+            Check [CHANGELOG.md](${{ github.repository }}/CHANGELOG.md)
   promote_to_final:
     needs: check_state
     environment: Release Cycle
