@@ -18,7 +18,7 @@ jobs:
       release_branch: ${{ contains(github.ref_name, 'release-v') }}
       push: ${{ github.event_name == 'push' }}
       dispatch: ${{ github.event_name == 'workflow_dispatch' }}
-      publish_ready: ${{ steps.check_publish_ready.outputs.CHANGESETS_QUANTITY == "0" }}
+      publish_ready: ${{ steps.check_publish_ready.outputs.CHANGESETS_QUANTITY == '0' }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up environment
