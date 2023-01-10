@@ -106,13 +106,11 @@ jobs:
             });
   publish:
     environment: npm
-    name: Promote to final release
+    name: Publish release
     if: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GH_TOKEN }} # Needed so release cycle triggers when pushing
       - name: Set up environment
         uses: ./.github/actions/setup
       - run: bash scripts/git-user-config.sh
