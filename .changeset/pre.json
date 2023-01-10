@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "dummy-npm-changesets-package": "1.6.0"
+  },
+  "changesets": []
+}
