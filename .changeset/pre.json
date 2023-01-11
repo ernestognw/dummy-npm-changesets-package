@@ -1,0 +1,11 @@
+{
+  "mode": "exit",
+  "tag": "rc",
+  "initialVersions": {
+    "dummy-npm-changesets-package": "1.9.0"
+  },
+  "changesets": [
+    "brave-cups-dream",
+    "dull-laws-smell"
+  ]
+}

@@ -1,5 +1,10 @@
 # dummy-npm-changesets-package
 
+## 1.10.0-rc.0 (2023-01-11)
+
+- Test minor again
+- Fix formatting
+
 ## 1.9.0 (2023-01-10)
 
 - `ERC20`: Add check for whatever ([#51](https://github.com/ernestognw/dummy-npm-changesets-package/pull/51))
