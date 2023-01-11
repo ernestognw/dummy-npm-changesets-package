@@ -12,7 +12,7 @@ const RELEASE_LINE_REGEX = new RegExp(
   `- (?:${PR_NUMBER}\\((${REPO_URL}pull/\\d+)\\) )?\\[\`${SHORT_SHA}\`\\]\\(${REPO_URL}commit/${FULL_SHA}\\) Thanks \\[\@${GITHUB_USERNAME}\\]\\(${GITHUB_URL}(?:apps/)?${GITHUB_USERNAME}\\)! - (.*)`,
   "g"
 );
-const VERSION_TITLE_REGEX = /\n## (\d\.\d\.\d(-rc\.\d)?)\n/g;
+const VERSION_TITLE_REGEX = /\n## (\d+\.\d+\.\d+(-rc\.\d+)?)\n/g;
 
 const formatted = CHANGELOG.replace(/\n- (\[.*)/g, "- $1")
   .replace(RELEASE_LINE_REGEX, (_, PRNumber, PRUrl, title) => {
