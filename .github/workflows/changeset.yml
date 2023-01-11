@@ -2,8 +2,8 @@ name: changeset
 
 on:
   pull_request:
-    branches:
-      - master
+    branches-ignore:
+      - release-v*
     types:
       - opened
       - synchronize
