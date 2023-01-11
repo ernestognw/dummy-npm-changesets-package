@@ -4,5 +4,8 @@
   "initialVersions": {
     "dummy-npm-changesets-package": "1.9.0"
   },
-  "changesets": []
+  "changesets": [
+    "brave-cups-dream",
+    "dull-laws-smell"
+  ]
 }
