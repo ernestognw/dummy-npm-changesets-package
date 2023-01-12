@@ -1,6 +1,6 @@
 {
   "name": "dummy-npm-changesets-package",
-  "version": "1.10.0-rc.1",
+  "version": "1.10.0",
   "description": "",
   "main": "index.js",
   "scripts": {
