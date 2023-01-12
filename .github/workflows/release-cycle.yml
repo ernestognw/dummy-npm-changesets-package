@@ -24,7 +24,7 @@ jobs:
           echo "preState=$(node scripts/release/read-changeset-state.js preState)" >> $GITHUB_OUTPUT
       - id: check_pr_back
         if: contains(github.ref_name, 'release-v') && github.event_name == 'push' && steps.changeset_state.outputs.preState != 'pre'
-        name: Check if PR back to main exists
+        name: Check if PR back to main is required
         uses: actions/github-script@v6
         with:
           result-encoding: string
