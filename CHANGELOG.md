@@ -1,5 +1,10 @@
 # dummy-npm-changesets-package
 
+## 1.10.0-rc.1 (2023-01-12)
+
+- Add minor
+- Patch to add
+
 ## 1.10.0-rc.0 (2023-01-11)
 
 - Test minor again
