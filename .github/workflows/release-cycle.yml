@@ -24,7 +24,7 @@ jobs:
           echo "preState=$(node scripts/release/read-changeset-state.js preState)" >> $GITHUB_OUTPUT
       - id: check_pr_back
         if: contains(github.ref_name, 'release-v') && github.event_name == 'push' && steps.changeset_state.outputs.preState != 'pre'
-        name: Check if PR back to master exists
+        name: Check if PR back to main exists
         uses: actions/github-script@v6
         with:
           result-encoding: string
@@ -33,7 +33,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               head: 'merge/${{ github.ref_name }}',
-              base: 'master',
+              base: 'main',
               state: 'open'
             });
 
@@ -172,7 +172,7 @@ jobs:
 
   pr_back:
     needs: check_state
-    name: Create PR back to master for final releases
+    name: Create PR back to main for final releases
     if: needs.check_state.outputs.pr_back == 'true'
     runs-on: ubuntu-latest
     steps:
