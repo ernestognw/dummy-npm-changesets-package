@@ -37,6 +37,8 @@ jobs:
               state: 'open'
             });
 
+            console.log(PRs)
+
             return (PRs.length === 0).toString();
 
     outputs:
