@@ -22,9 +22,6 @@ jobs:
         run: |
           echo "changesets=$(node scripts/release/read-changeset-state.js changesets length)" >> $GITHUB_OUTPUT
           echo "prestate=$(node scripts/release/read-changeset-state.js preState mode)" >> $GITHUB_OUTPUT
-          echo $(node scripts/release/read-changeset-state.js preState mode)
-          echo ${{ github.event_name }}
-          echo ${{ github.ref_name }}
       - id: check_pr_back
         if: contains(github.ref_name, 'release-v') && github.event_name == 'push' && steps.changeset_state.outputs.prestate == 'undefined'
         name: Check if PR back to main is required
@@ -41,7 +38,6 @@ jobs:
             });
 
             return (PRs.length === 0).toString();
-      - run: echo ${{ steps.check_pr_back.outputs.result }}
 
     outputs:
       start_release_candidate: ${{ github.ref_name == 'main' && github.event_name == 'workflow_dispatch' }}
