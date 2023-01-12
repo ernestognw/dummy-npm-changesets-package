@@ -41,7 +41,7 @@ jobs:
             });
 
             return (PRs.length === 0).toString();
-        - run: echo ${{ steps.check_pr_back.outputs.result }}
+      - run: echo ${{ steps.check_pr_back.outputs.result }}
 
     outputs:
       start_release_candidate: ${{ github.ref_name == 'main' && github.event_name == 'workflow_dispatch' }}
