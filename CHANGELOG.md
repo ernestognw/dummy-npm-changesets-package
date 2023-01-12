@@ -1,5 +1,20 @@
 # dummy-npm-changesets-package
 
+## 1.11.0 (2023-01-12)
+
+- Another minor
+- Remove console.log ([#63](https://github.com/ernestognw/dummy-npm-changesets-package/pull/63))
+- Cherry pick
+
+## 1.11.0-rc.1 (2023-01-12)
+
+- Remove console.log
+
+## 1.11.0-rc.0 (2023-01-12)
+
+- Another minor
+- Cherry pick
+
 ## 1.10.0 (2023-01-12)
 
 - Test minor again
