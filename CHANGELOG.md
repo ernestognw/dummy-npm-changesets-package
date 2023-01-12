@@ -1,5 +1,10 @@
 # dummy-npm-changesets-package
 
+## 1.11.0-rc.0 (2023-01-12)
+
+- Another minor
+- Cherry pick
+
 ## 1.10.0 (2023-01-12)
 
 - Test minor again

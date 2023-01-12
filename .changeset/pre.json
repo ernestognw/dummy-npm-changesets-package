@@ -4,5 +4,8 @@
   "initialVersions": {
     "dummy-npm-changesets-package": "1.10.0"
   },
-  "changesets": []
+  "changesets": [
+    "mean-boats-walk",
+    "yellow-squids-leave"
+  ]
 }
