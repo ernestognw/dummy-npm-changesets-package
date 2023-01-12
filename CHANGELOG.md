@@ -1,5 +1,18 @@
 # dummy-npm-changesets-package
 
+## 1.10.0 (2023-01-12)
+
+- Test minor again
+- Add minor
+- Fix formatting
+- Patch to add
+- Cherry pick ([#60](https://github.com/ernestognw/dummy-npm-changesets-package/pull/60))
+
+## 1.10.0-rc.1 (2023-01-12)
+
+- Add minor
+- Patch to add
+
 ## 1.10.0-rc.0 (2023-01-11)
 
 - Test minor again
