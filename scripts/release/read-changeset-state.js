@@ -22,6 +22,8 @@ async function readChangesetState(cwd = process.cwd()) {
 const [_, __, ...fields] = process.argv;
 
 const get = (value, [field, ...fields]) =>
-  field === undefined ? value : get(value[field], fields);
+  field === undefined || field === undefined
+    ? value
+    : get(value[field], fields);
 
 readChangesetState().then((state) => console.log(get(state, fields)));
