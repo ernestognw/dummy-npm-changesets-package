@@ -187,8 +187,8 @@ jobs:
           RELEASE_BRANCH: ${{ github.ref_name }}
         run: |
           (git show-branch foo1 &>/dev/null) && git checkout "merge/$RELEASE_BRANCH" || git checkout -b "merge/$RELEASE_BRANCH"
-          DELETED_CHANGESETS=$(git diff main --name-only | grep '.changeset/' | grep '.md')
-          git merge main -m "Merge main to $RELEASE_BRANCH"
+          DELETED_CHANGESETS=$(git diff origin/main --name-only | grep '.changeset/' | grep '.md')
+          git merge origin/main -m "Merge main to $RELEASE_BRANCH"
           echo $DELETED_CHANGESETS | while read -r changeset; do rm $changeset; done
           git add .
           git commit -m "Sync changesets with main"
