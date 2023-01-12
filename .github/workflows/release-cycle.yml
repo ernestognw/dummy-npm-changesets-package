@@ -37,14 +37,14 @@ jobs:
               state: 'open'
             });
 
-            return PRs.length;
+            return PRs.length == 0;
 
     outputs:
       start_release_candidate: ${{ github.ref_name == 'main' && github.event_name == 'workflow_dispatch' }}
       changesets_pr: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' }}
       promote_to_final: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'workflow_dispatch' }}
       publish: ${{ contains(github.ref_name, 'release-v') && github.event_name == 'push' && steps.changeset_state.outputs.changesets == '0' }}
-      pr_back: ${{ steps.check_pr_back.outputs.result == '0' }}
+      pr_back: ${{ steps.check_pr_back.outputs.result == 'true' }}
 
   start_release_candidate:
     needs: check_state
@@ -187,7 +187,7 @@ jobs:
           RELEASE_BRANCH: ${{ github.ref_name }}
         run: |
           git checkout -b "merge/$RELEASE_BRANCH"
-          DELETED_CHANGESETS=$(git diff release-v1.10 --name-only | grep '.changesets/' | grep '.md')
+          DELETED_CHANGESETS=$(git diff $RELEASE_BRANCH --name-only | grep '.changesets/' | grep '.md')
           git merge main -m "Merge main to $RELEASE_BRANCH"
           echo $DELETED_CHANGESETS | while read -r changeset; do rm $changeset; done
           git add .
