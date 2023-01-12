@@ -19,4 +19,6 @@ async function readChangesetState(cwd = process.cwd()) {
   };
 }
 
-readChangesetState().then(({ changesets }) => console.log(!changesets.length));
+const [_, __, field] = process.argv;
+
+readChangesetState().then((state) => console.log(field ? state[field] : state));
